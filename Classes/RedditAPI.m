@@ -1,6 +1,6 @@
 //
 //  RedditAPI.m
-//  Alien Blue
+//  Alien Blue :: http://alienblue.org
 //
 //  Created by Jason Morrissey on 4/04/10.
 //  Copyright 2010 The Design Shed. All rights reserved.
@@ -594,8 +594,6 @@ NSString * cookieDomain = @".reddit.com";
 {
 	NSLog(@"fetchCommentsForPostID in()");
 	NSString * fetch_comments_url = [[NSString alloc] initWithFormat:@"%@/comments/%@/.json?sort=top", server, postID];
-//	NSString * fetch_comments_url = [[NSString alloc] initWithFormat:@"http://10.1.1.2:7777/funniest3.json"];
-//	NSString * fetch_comments_url = [[NSString alloc] initWithFormat:@"file:///Volumes/media/Dev/AlienBlue/AlienBlue/funniest3.json"];
 
 	NSLog(fetch_comments_url);
 	

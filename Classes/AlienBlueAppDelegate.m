@@ -1,6 +1,6 @@
 //
 //  AlienBlueAppDelegate.m
-//  Alien Blue
+//  Alien Blue :: http://alienblue.org
 //
 //  Created by Jason Morrissey on 28/03/10.
 //  Copyright The Design Shed 2010. All rights reserved.

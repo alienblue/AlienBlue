@@ -1,6 +1,6 @@
 //
 //  CommentWrapper.h
-//  Alien Blue
+//  Alien Blue :: http://alienblue.org
 //
 //  Created by Jason Morrissey on 23/04/10.
 //  Copyright 2010 The Design Shed. All rights reserved.

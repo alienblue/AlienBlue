@@ -1,6 +1,6 @@
 //
 //  CommentsTableViewController.m
-//  Alien Blue
+//  Alien Blue :: http://alienblue.org
 //
 //  Created by Jason Morrissey on 29/03/10.
 //  Copyright 2010 The Design Shed. All rights reserved.
