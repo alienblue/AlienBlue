@@ -1,5 +1,9 @@
 Alien Blue is a Commercial Open Source Reddit Client for iPhone / iPod Touch and iPad.
 
+<a href="https://www.cisimple.com/jobs/3nqhi60r6ulmn0w35"><img src='https://www.cisimple.com/jobs/3nqhi60r6ulmn0w35/build_status.png'/></a>
+
+Continuous Integration provided by [cisimple](https://www.cisimple.com).
+
 The support website for Alien Blue can be found at:
 
 http://alienblue.org
