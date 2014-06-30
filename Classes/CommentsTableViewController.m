@@ -90,11 +90,22 @@ float CommentsLoadProgressValue = 0;
 	int link_counter = 0;
 	BOOL linksAvailable = TRUE;
 //	NSLog(@"Body Text: %@",body);
-	while (linksAvailable) {	
+	while (linksAvailable) {
+        
+        //no crashes here, move it along
+        if ([body rangeOfString:@"http://" options:NSCaseInsensitiveSearch range:NSMakeRange (pos, bodyLength - pos)].location == NSNotFound)
+            break;
+
 		start_link_pos = [body rangeOfString:@"http://" options:NSCaseInsensitiveSearch range:NSMakeRange (pos, bodyLength - pos)].location;
-		end_link_pos = [body rangeOfString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location;
+
+        if ([body rangeOfString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location != NSNotFound)
+            end_link_pos = [body rangeOfString:@" " options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location;
+
 		// also try newline character if space is not found
-		int new_line_pos = [body rangeOfString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location;
+        int new_line_pos;
+        if ([body rangeOfString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location != NSNotFound)
+            new_line_pos = [body rangeOfString:@"\n" options:NSCaseInsensitiveSearch range:NSMakeRange (start_link_pos, bodyLength - start_link_pos)].location;
+
 		// use the one that is closest to the http
 		if (new_line_pos != NSNotFound)
 		{
@@ -153,10 +164,16 @@ float CommentsLoadProgressValue = 0;
 	BOOL linksAvailable = TRUE;
 	
 	while (linksAvailable) {
-		lsqb = [body rangeOfString:@"[" options:NSCaseInsensitiveSearch range:NSMakeRange (pos, bodyLength - pos)].location + 1;
-		rsqb = [body rangeOfString:@"](" options:NSCaseInsensitiveSearch range:NSMakeRange (lsqb, bodyLength - lsqb)].location;
+        
+        //do a check for ending brackets first
+        if ([body rangeOfString:@"])"].location == NSNotFound)
+            break;
+        
+		lsqb = [body rangeOfString:@"[" options:NSCaseInsensitiveSearch range:NSMakeRange (pos, bodyLength - pos)].location + 1; //index of left square bracket
+		rsqb = [body rangeOfString:@"](" options:NSCaseInsensitiveSearch range:NSMakeRange (lsqb, bodyLength - lsqb)].location; ////index of right square bracket
 		lrb = rsqb + 2;
 		rrb = [body rangeOfString:@")" options:NSCaseInsensitiveSearch range:NSMakeRange (lrb, bodyLength - lrb)].location;
+
 		if (lsqb != NSNotFound && rsqb != NSNotFound && rrb != NSNotFound)
 		{
 			link_counter++;
